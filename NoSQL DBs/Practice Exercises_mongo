@@ -1,0 +1,36 @@
+#Total marks for each student across all subjects
+db.marks.aggregate([
+    {
+        "$group":{"_id":"$name","total":{"$sum":"$marks"}}
+    }
+])
+
+#Maximum marks scored in each subject
+db.marks.aggregate([
+    {
+        "$group":{"_id":"$subject","max_marks":{"$max":"$marks"}}
+    }
+])
+
+#Minimum marks scored by each student
+db.marks.aggregate([
+    {
+        "$group":{"_id":"$name","min_marks":{"$min":"$marks"}}
+    }
+])
+
+#Top 2 subjects based on average marks
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$subject",
+        "average":{"$avg":"$marks"}
+        }
+},
+{
+    "$sort":{"average":-1}
+},
+{
+    "$limit":2
+}
+])

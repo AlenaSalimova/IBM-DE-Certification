@@ -1,0 +1,22 @@
+db.marks.aggregate([
+{"$sort":{"marks":-1}},
+{"$limit":2}
+])
+```	
+
+# Exercise 5 - Group by
+
+The operator $group by, along with operators like $sum, $avg, $min, $max, allows us to perform grouping operations.
+
+This aggregation pipeline prints the average marks across all subjects.
+
+```	
+
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$subject",
+        "average":{"$avg":"$marks"}
+        }
+}
+])

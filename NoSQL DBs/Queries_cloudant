@@ -1,0 +1,84 @@
+1. Select all fields in all documents
+{
+   "selector": {}
+}
+
+2. Select all fields in all documents with _id greater than 4
+{
+   "selector": {
+      "_id": {
+         "$gt": "4"
+      }
+   }
+}
+
+3. Select all fields in all documents with _id less than 4
+{
+   "selector": {
+      "_id": {
+         "$lt": "4"
+      }
+   }
+}
+
+4. Select the fields _id, square_feet and price in all documents
+{
+   "selector": {},
+   "fields": [
+      "_id",
+      "price",
+      "square_feet"
+   ]
+}
+
+5. Select the fields _id, square_feet and price in documents with _id less than 4
+{
+   "selector": {
+   "_id": {
+         "$lt": "4"
+      }
+   },
+   "fields": [
+      "_id",
+      "price",
+      "square_feet"
+   ]
+}
+
+6. Select the fields _id, bedrooms and price in documents with _id greater than 2 and sort by _id ascending
+{
+   "selector": {
+      "_id": {
+         "$gt": "2"
+      }
+   },
+   "fields": [
+      "_id",
+      "price",
+      "square_feet"
+   ],
+   "sort": [
+      {
+         "_id": "asc"
+      }
+   ]
+}
+
+7. Select the fields _id, bedrooms and price in documents with _id greater than 2 and sort by _id descending
+{
+   "selector": {
+      "_id": {
+         "$gt": "2"
+      }
+   },
+   "fields": [
+      "_id",
+      "price",
+      "square_feet"
+   ],
+   "sort": [
+      {
+         "_id": "desc"
+      }
+   ]
+}
